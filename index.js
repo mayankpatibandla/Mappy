@@ -36,6 +36,8 @@ const client = new Discord.Client({
 require("dotenv").config();
 const token = process.env.token;
 
+console.log(token);
+
 const prefix = '.';
 
 channelID = '';
