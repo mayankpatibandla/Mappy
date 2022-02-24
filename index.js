@@ -34,7 +34,7 @@ const client = new Discord.Client({
 });
 
 require("dotenv").config();
-const token = process.env.token;
+const token = process.env.TOKEN;
 
 const prefix = '.';
 
