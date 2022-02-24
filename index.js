@@ -16,12 +16,12 @@ async function takeScreenshot(f){
   console.log("Attempting to screenshot...")
   webshot('https://foxholestats.com/', screenshotPath, options, function(err){
     if(!err){
-      //console.log("Succesfully taken a screenshot")
+      console.log("Succesfully taken a screenshot")
       f()
       return Promise.resolve();
     }
     else{
-      //console.log("There was an error taking a screenshot");
+      console.log("There was an error taking a screenshot");
       return Promise.reject("Unable to take screenshot");
     }
   });
@@ -72,7 +72,7 @@ async function update(chan){
         const promise = fs.promises.readFile(screenshotPath);
         Promise.resolve(promise).then(function(buffer){
           chan.send({files: [{attachment: buffer}]});
-        });
+        }).catch(err => {console.log(err)});
       }
       catch(err){
         console.log("The image took too long to upload. Please try again.");
@@ -111,7 +111,7 @@ client.on('messageCreate', async msg => {
     }
     else if(sub.startsWith('bind')){
       var bindStr = sub.split("bind").pop().substring(1);
-      console.log(bindStr);
+      //console.log(bindStr);
       if(bindStr === ''){
         msg.channel.send(`Incorrent usage of command. Proper usage: ${prefix}bind <Channel ID | 'here'>`)
       }
