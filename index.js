@@ -132,6 +132,9 @@ client.on('messageCreate', async msg => {
         }
       }
     }
+	else if(sub.startsWith('shutdown')){
+		client.channels.cache.get(channelID).send("Mappy is shutting down temporarily")
+	}
     else if(sub.startsWith('help')){
       const helpEmbed = new Discord.MessageEmbed()
         .setColor('#0099ff')
